@@ -52,7 +52,6 @@ void readSensors()
     return;
   }
 
-  
 
   bool fireDetected = (flame == LOW);
 
@@ -68,8 +67,6 @@ void readSensors()
   else
     digitalWrite(BUZZER_PIN, LOW);
 
-
-  
 
   lcd.clear();
 
@@ -110,7 +107,6 @@ void readSensors()
   delay(2000);
 
 
-
   lcd.clear();
 
   lcd.setCursor(0, 0);
@@ -128,8 +124,6 @@ void readSensors()
     lcd.print(" SAFE");
 
   delay(2000);
-
-
 
   Serial.print("Smoke: ");
   Serial.print(smoke);
@@ -149,9 +143,6 @@ void readSensors()
     Serial.println(" FIRE");
   else
     Serial.println(" SAFE");
-
-
-  
 
   if (Blynk.connected())
   {
@@ -180,8 +171,7 @@ void readSensors()
       Blynk.virtualWrite(V4, "OFFICE SECURE");
     }
 
-   
-
+  
     if (fireDetected)
     {
       Blynk.logEvent(
@@ -208,9 +198,6 @@ void readSensors()
   }
 }
 
-
-
-
 void setup()
 {
   Serial.begin(115200);
@@ -219,9 +206,6 @@ void setup()
   pinMode(BUZZER_PIN, OUTPUT);
 
   digitalWrite(BUZZER_PIN, LOW);
-
-
-
 
   Wire.begin(D2, D1);
 
@@ -238,12 +222,7 @@ void setup()
 
   delay(2000);
 
-
- 
-
   dht.begin();
-
-
 
   WiFi.begin(ssid, pass);
 
@@ -268,8 +247,6 @@ void setup()
 
     Serial.print("IP: ");
     Serial.println(WiFi.localIP());
-
-    // ---------- Blynk ----------
 
     Blynk.config(BLYNK_AUTH_TOKEN);
 
